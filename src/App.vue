@@ -14,23 +14,28 @@ import Header from './components/Header'
 import MessagesSection from './components/MessagesSection'
 import Sender from './components/Sender'
 import {getIndex} from './js/apiConnector.js'
-import {initialSocket} from './js/socket.js'
+import MessageSocketConnection from './js/socket.js'
 
 export default {
   name: 'App',
   components : {Header, MessagesSection, Sender},
   data(){
     return {
-      text : ""
+      text : "",
+      socketConn : null
     }
   },
   methods : {
     sendBtnPressed : function(text){
       this.$refs.messageSection.sendMyMessage(text)
+      this.socketConn.sendMessage(text)
     }
   },
   created() {
-    initialSocket()
+    let self = this
+    this.socketConn = new MessageSocketConnection((msg)=>{
+      self.$refs.messageSection.sendOthersMessage('',msg)
+    })
   },
 }
 </script>
