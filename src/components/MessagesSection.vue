@@ -29,7 +29,7 @@ export default {
             }, {
                 type : 'me',
                 text : 'sakldjaslkdjaskldjkasldlkasjdlkasjdlka asd asda sd asd sasd'
-            } 
+            }
             ]
         }
     },

@@ -13,6 +13,9 @@
 import Header from './components/Header'
 import MessagesSection from './components/MessagesSection'
 import Sender from './components/Sender'
+import {getIndex} from './js/apiConnector.js'
+import {initialSocket} from './js/socket.js'
+
 export default {
   name: 'App',
   components : {Header, MessagesSection, Sender},
@@ -25,7 +28,10 @@ export default {
     sendBtnPressed : function(text){
       this.$refs.messageSection.sendMyMessage(text)
     }
-  }
+  },
+  created() {
+    initialSocket()
+  },
 }
 </script>
 
