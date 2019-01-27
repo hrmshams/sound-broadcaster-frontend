@@ -1,25 +1,23 @@
 <template>
   <div id="app">
     
-    <div class = "container mt-4">
-      <div class="card" style="width: 18rem;">
-        <div class="card-body">
-          <h5 class="card-title">welcome</h5>
-          <p class="card-text">just a test text.</p>
-          <a href="#" class="btn btn-primary">Go somewhere</a>
-        </div>
-      </div>
+    <div class = "container flex column fullSize">
+      <Header></Header>
+      <MessagesSection></MessagesSection>
+      <Sender></Sender>
     </div>
-
   </div>
 </template>
 
 <script>
+import Header from './components/Header'
+import MessagesSection from './components/MessagesSection'
+import Sender from './components/Sender'
 export default {
-  name: 'App'
+  name: 'App',
+  components : {Header, MessagesSection, Sender}
 }
 </script>
-
 
 <style lang="scss">
 @import './scss/custom-bootstrap.scss';

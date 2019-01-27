@@ -1,0 +1,18 @@
+.flex {
+    display : flex;
+}
+.scretch {
+    flex : 1;
+}
+.row {
+    flex-direction : row;
+}
+.column {
+    flex-direction : column;
+}
+.debug {
+    background-color: crimson
+}
+.fullSize {
+ height: 100vh;
+}
