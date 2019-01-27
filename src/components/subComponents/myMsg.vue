@@ -1,6 +1,6 @@
 <template>
     <div id="my-container">
-        <div id="msg-box">
+        <div class="msg-box" id ="my-msg-box">
             {{text}}
         </div>
     </div>
@@ -20,15 +20,7 @@ export default {
     justify-content : flex-end; 
 }
 
-#msg-box {
-    border: 2px solid white;
-    border-radius:3px;
-    padding : 10px;
-    background-color : blue;
-    width : 400px;
-
-    word-wrap: break-word;
-
+#my-msg-box {
 }
 #sender-text {
     font-size : 13px;

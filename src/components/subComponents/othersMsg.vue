@@ -3,7 +3,7 @@
         <p id="sender-text">
         {{sender}}
         </p>    
-        <div id="msg-box">
+        <div id="others-msg-box" class = "msg-box">
             {{text}}
         </div>
     </div>
@@ -15,24 +15,16 @@ export default {
 }
 </script>
 
-<style lang="">
+<style lang="scss">
+@import 'msgBox.css';
 #other-container {
     margin : 10px;
 }
 
-#msg-box {
-    border: 2px solid white;
-    border-radius:3px;
-    padding : 10px;
-    background-color : white;
-    width : 400px;
-
+#others-msg-box {
     display : flex;
     flex-direction : row;
     justify-content : flex-start; 
-
-    word-wrap: break-word;
-
 }
 #sender-text {
     font-size : 13px;
