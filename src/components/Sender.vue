@@ -1,17 +1,27 @@
 <template>
     <div class = "flex row" id="sender-container">
         <div id="input-container" class = "scretch">
-            <input type="text" class="form-control" id="usr">
+            <input type="text" class="form-control" id="usr" v-model="text">
         </div>
         <div id="button-container">
-            <button type="button" class="btn btn-warning">Send</button>      
+            <button type="button" class="btn btn-warning" v-on:click="onSendPress">Send</button>      
         </div>
     </div>
 </template>
 
 <script>
 export default {
-    
+    methods : {
+        onSendPress : function(){
+            this.$emit('sendBtnHandler', this.text)
+            this.text = ""
+        }
+    },
+    data(){
+        return {
+            text : ''
+        }
+    }
 }
 </script>
 

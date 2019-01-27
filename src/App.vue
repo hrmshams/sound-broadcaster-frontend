@@ -3,8 +3,8 @@
     
     <div class = "container flex column fullSize">
       <Header></Header>
-      <MessagesSection></MessagesSection>
-      <Sender></Sender>
+      <MessagesSection ref="messageSection"></MessagesSection>
+      <Sender @sendBtnHandler = "sendBtnPressed"></Sender>
     </div>
   </div>
 </template>
@@ -15,7 +15,17 @@ import MessagesSection from './components/MessagesSection'
 import Sender from './components/Sender'
 export default {
   name: 'App',
-  components : {Header, MessagesSection, Sender}
+  components : {Header, MessagesSection, Sender},
+  data(){
+    return {
+      text : ""
+    }
+  },
+  methods : {
+    sendBtnPressed : function(text){
+      this.$refs.messageSection.sendMyMessage(text)
+    }
+  }
 }
 </script>
 

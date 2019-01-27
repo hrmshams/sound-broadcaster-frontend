@@ -1,11 +1,11 @@
 <template>
     <div class = "flex column" id="body">
         <Message 
-            v-for="(msg, index) in message" 
+            v-for = "(msg, index) in message" 
             :type = "msg.type"
             :sender = "msg.sender"
             :text = "msg.text"
-            :key="index"
+            :key = "index"
         >
         </Message>
     </div>
@@ -28,9 +28,24 @@ export default {
                 sender : 'koroush'
             }, {
                 type : 'me',
-                text : 'sakldjaslkdjaskldjkasldlkasjdlkasjdlkasdjlaksdjaskldjaslkdjaslkdjlas askl aslk djaskl djasldk ja asd as da sd as d sa as das d as d asd asda sd asd sasd'
+                text : 'sakldjaslkdjaskldjkasldlkasjdlkasjdlka asd asda sd asd sasd'
             } 
             ]
+        }
+    },
+    methods : {
+        sendMyMessage : function(text){
+            this.message.push({
+                type : 'me',
+                text : text
+            })
+        },
+        sendOthersMessage : function(sender, text){
+            this.message.push({
+                sender : sender,
+                type : 'others',
+                text : text,
+            })
         }
     }
 
@@ -40,6 +55,7 @@ export default {
 <style>
 #body {
     flex:1;
-    background-color : #4fefb0
+    background-color : #4fefb0;
+    overflow-y: scroll;
 }
 </style>
