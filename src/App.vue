@@ -2,7 +2,7 @@
   <div id="app">
     
     <div class = "container flex column fullSize">
-      <Header></Header>
+      <Header @airBtnHandler = "airBtnPressed"></Header>
       <MessagesSection ref="messageSection"></MessagesSection>
       <Sender @sendBtnHandler = "sendBtnPressed"></Sender>
     </div>
@@ -15,6 +15,7 @@ import MessagesSection from './components/MessagesSection'
 import Sender from './components/Sender'
 import {getIndex} from './js/apiConnector.js'
 import MessageSocketConnection from './js/socket.js'
+import VoiceRecorder from './js/voiceRecoder.js'
 
 export default {
   name: 'App',
@@ -29,6 +30,14 @@ export default {
     sendBtnPressed : function(text){
       this.$refs.messageSection.sendMyMessage(text)
       this.socketConn.sendMessage(text)
+    },
+    airBtnPressed : function(airStateIndex){
+      if (airStateIndex === 0){
+        this.voiceRecorder = new VoiceRecorder()
+        this.voiceRecorder.startRecording()
+      }else{
+        this.voiceRecorder.stopRecording()
+      }
     }
   },
   created() {
@@ -36,8 +45,8 @@ export default {
     this.socketConn = new MessageSocketConnection((msg)=>{
       self.$refs.messageSection.sendOthersMessage('',msg)
     }, 
-    (voice)=>{
-      
+    (chunks)=>{
+      VoiceRecorder.convertChunkToAudio(chunks)
     })
   },
 }

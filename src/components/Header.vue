@@ -13,7 +13,6 @@
 </template>
 
 <script>
-import VoiceRecorder from './../js/voiceRecoder.js'
 
 const data = {
   airTexts : [
@@ -46,13 +45,7 @@ export default {
   },
   methods: {
     onAirBtnPress : function(){
-      if (this.airStateIndex === 0){
-        this.voiceRecorder = new VoiceRecorder()
-        this.voiceRecorder.startRecording()
-      }else{
-        this.voiceRecorder.stopRecording()
-      }
-
+      this.$emit('airBtnHandler', this.airStateIndex)
       this.airStateIndex = (this.airStateIndex+1) % 2
       this.airText = data.airTexts[this.airStateIndex]
       this.icon = data.icon[this.airStateIndex]

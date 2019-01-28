@@ -31,7 +31,7 @@ export default class VoiceRecorder {
         this.mediaRecorder = null
     }
 
-    convertChunkToAudio(chunks){
+    static convertChunkToAudio(chunks){
         const audioBlob = new Blob(chunks)
         const audioUrl = URL.createObjectURL(audioBlob)
         const audio = new Audio(audioUrl)
