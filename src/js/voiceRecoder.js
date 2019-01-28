@@ -1,26 +1,34 @@
 export default class VoiceRecorder {
     constructor(){
-        this.getMediaRecorder()
     }
 
-    getMediaRecorder(){
+    getMediaRecorder(onGot){
         let self = this
         navigator.mediaDevices.getUserMedia({audio : true})
         .then(stream => {
-            self.mediaRecorder = new MediaRecorder(stream)
+            const mediaRecorder = new MediaRecorder(stream)
+            console.log('stream is got!')
+            onGot(mediaRecorder)
         })
     }
 
     startRecording(){
-        this.mediaRecorder.start()
-        const audioChunks = []
-        this.mediaRecorder.addEventListener("dataavailable", (event)=>{
-            audioChunks.push(event.data)
+        let self = this
+        this.getMediaRecorder((mediaRecorder) =>{
+            this.mediaRecorder = mediaRecorder
+            mediaRecorder.start()
+            const audioChunks = []
+            mediaRecorder.addEventListener("dataavailable", (event)=>{
+                audioChunks.push(event.data)
+                // console.log(event.data)
+            })
         })
     }
 
     stopRecording(){
+        console.log('stoping')
         this.mediaRecorder.stop()
+        this.mediaRecorder = null
     }
 
     convertChunkToAudio(chunks){

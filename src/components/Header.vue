@@ -13,6 +13,8 @@
 </template>
 
 <script>
+import VoiceRecorder from './../js/voiceRecoder.js'
+
 const data = {
   airTexts : [
     'press to get on the air',
@@ -27,18 +29,30 @@ const data = {
     'btn-warning',
   ]
 }
+
 export default {
+  created() {
+  },
+
   data () {
     return {
       header: 'Sound Broadcaster',
       airStateIndex : 0,
       airText : data.airTexts[0],
       icon : data.icon[0],
-      classname : data.classname[0]
+      classname : data.classname[0],
+      voiceRecorder : null
     }
   },
   methods: {
     onAirBtnPress : function(){
+      if (this.airStateIndex === 0){
+        this.voiceRecorder = new VoiceRecorder()
+        this.voiceRecorder.startRecording()
+      }else{
+        this.voiceRecorder.stopRecording()
+      }
+
       this.airStateIndex = (this.airStateIndex+1) % 2
       this.airText = data.airTexts[this.airStateIndex]
       this.icon = data.icon[this.airStateIndex]

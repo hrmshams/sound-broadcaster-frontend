@@ -11,6 +11,8 @@
 
 <script>
 export default {
+    created() {
+    },
     methods : {
         onSendPress : function(){
             this.$emit('sendBtnHandler', this.text)

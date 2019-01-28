@@ -35,6 +35,9 @@ export default {
     let self = this
     this.socketConn = new MessageSocketConnection((msg)=>{
       self.$refs.messageSection.sendOthersMessage('',msg)
+    }, 
+    (voice)=>{
+      
     })
   },
 }
