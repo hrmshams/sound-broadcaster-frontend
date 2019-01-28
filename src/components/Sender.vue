@@ -4,7 +4,7 @@
             <input type="text" class="form-control" id="usr" v-model="text">
         </div>
         <div id="button-container">
-            <button type="button" class="btn btn-warning" v-on:click="onSendPress">Send</button>      
+            <button type="button" class="btn btn-warning" v-on:click="onSendPress">Send <font-awesome-icon icon="angle-right"/></button>      
         </div>
     </div>
 </template>

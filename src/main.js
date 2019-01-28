@@ -4,6 +4,21 @@ import Vue from 'vue'
 import App from './App'
 require('./css/common.css')
 // import router from './router'
+import { library } from '@fortawesome/fontawesome-svg-core'
+import { 
+  faMicrophoneAlt, 
+  faMicrophoneAltSlash, 
+  faBullhorn,
+  faAngleRight
+} from '@fortawesome/free-solid-svg-icons'
+import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
+library.add(
+  faMicrophoneAlt,
+  faMicrophoneAltSlash,
+  faBullhorn,
+  faAngleRight
+)
+Vue.component('font-awesome-icon', FontAwesomeIcon)
 
 Vue.config.productionTip = false
 
